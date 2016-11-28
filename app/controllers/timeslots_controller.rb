@@ -72,8 +72,6 @@ class TimeslotsController < ApplicationController
     redirect_to dashboard_path
   end
 
-<<<<<<< HEAD
-=======
   private
 
   def timeslots_params
@@ -149,5 +147,4 @@ class TimeslotsController < ApplicationController
       mail.deliver
     end
   end
->>>>>>> d8275aba36ff52ff4be15a6f2b53dad5bb7f5485
 end
