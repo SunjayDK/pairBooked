@@ -7,6 +7,8 @@ Environment setup:
 
 * pair*Booked* is written in Ruby on Rails 5. Make sure you have Rails 5 installed on your server along with Bundler version 1.13.5.
 
+* Run ```bundle install``` to install and initialize all gems the application depends on
+
 * In order to run on Heroku servers, pair*Booked* uses a postgresql database. Make sure you have a compatible postgresql server running. For set up tips, see this tutorial: https://community.c9.io/t/setting-up-postgresql/1573
 
 * pair*Booked* uses the Github api to authenticate users. In order to run this program, you will need to generate a primary key and secret here: https://github.com/settings/tokens/new
