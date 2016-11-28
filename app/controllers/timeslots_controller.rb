@@ -56,6 +56,7 @@ class TimeslotsController < ApplicationController
       @errors = ["Start time must before end time."]
       render action: "new"
     elsif sanitized_params[:start_at] <= DateTime.now
+
       @errors = ["Start time must after the current time."]
       render action: "new"
     else
@@ -71,4 +72,82 @@ class TimeslotsController < ApplicationController
     redirect_to dashboard_path
   end
 
+<<<<<<< HEAD
+=======
+  private
+
+  def timeslots_params
+    params.require(:timeslots).permit( :start_date, :start_time, :end_time)
+  end
+
+  def convert_to_datetime(params)
+    start_datetime = params[:start_date] + " " + params[:start_time]
+    params[:start_at] = start_datetime.in_time_zone(zone = current_time_zone)
+    end_datetime = params[:start_date] + " " + params[:end_time]
+    params[:end_at] = end_datetime.in_time_zone(zone = current_time_zone)
+  end
+
+  def create_timeslots(start_at, end_at, initiator_id, challenge)
+    temp_start_at = start_at + 1.hour
+    if duration_greater_than_hour(start_at, end_at)
+      create_timeslot(start_at, temp_start_at, initiator_id, challenge)
+      create_timeslots(temp_start_at, end_at, initiator_id, challenge)
+    else
+      create_timeslot(start_at, temp_start_at, initiator_id, challenge)
+    end
+  end
+
+  def create_timeslot(start_at, end_at, initiator_id, challenge)
+    timeslot = challenge.timeslots.new(
+      start_at:     start_at,
+      end_at:       end_at
+      )
+    timeslot.initiator_id = initiator_id
+    timeslot.save
+  end
+
+  def duration_greater_than_hour(start_at, end_at)
+    (((end_at.to_time - start_at.to_time) / 3600).round) > 1
+  end
+
+  def send_confirmation(timeslot)
+    controller = self
+    mail = Mail.new do
+      from    'bobolinkpairbook@gmail.com'
+      subject   "pairBook #{timeslot.challenge.name}"
+      delivery_method :sendmail
+
+      html_part do
+        content_type 'text/html; charset=UTF-8'
+        body controller.render_to_string(
+          :locals => {:@timeslot => timeslot},
+          :template => :'timeslots/show.html'
+        )
+      end
+    end
+
+    [timeslot.initiator.email, timeslot.acceptor.email].each do |email|
+      mail[:to] = email
+      mail.deliver
+    end
+  end
+
+  def send_cancellation(timeslot)
+    controller = self
+    mail = Mail.new do
+      from    'bobolinkpairbook@gmail.com'
+      subject   "CANCELLED pairBook #{timeslot.challenge.name}"
+      delivery_method :sendmail
+
+      text_part do
+        body "Your pairing on #{controller.timeslot_string(timeslot)} was cancelled. Please re-input your availability for this challenge."
+      end
+    end
+
+    [timeslot.initiator.email, timeslot.acceptor.email].each do |email|
+      mail[:to] = email
+      mail.deliver
+    end
+  end
+>>>>>>> d8275aba36ff52ff4be15a6f2b53dad5bb7f5485
 end

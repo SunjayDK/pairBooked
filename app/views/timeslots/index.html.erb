@@ -1,5 +1,16 @@
-<h1><%= @challenge.name %></h1>
-<a class="btn btn-success" href='/challenges/<%= @challenge.id %>/timeslots/new'><span class="glyphicon glyphicon-plus"></span> Create</a>
+<div id="timeslot-index-header" class="row">
+  <div class="col-lg-10">
+    <div class="col-lg-8 col-md-10 col-sm-10">
+      <h1><%= @challenge.name %></h1>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+    <a class="btn btn-success" href='/challenges/<%= @challenge.id %>/timeslots/new'><span class="glyphicon glyphicon-plus"></span> Create</a>
+    </div>
+  </div>
+<!--   <div class="col-lg-1">
+    <a class="btn btn-success" href='/challenges/<%= @challenge.id %>/timeslots/new'><span class="glyphicon glyphicon-plus"></span> Create</a>
+  </div> -->
+</div>
 <br>
 <br>
 <div>
@@ -20,8 +31,8 @@
         <% if @soon_timeslots[:Monday] != nil %>
           <% @soon_timeslots[:Monday].each do |timeslot| %>
               <li class="timeslot">
-                <a class="btn btn-warning soon" href="/challenges/<%=timeslot.challenge_id%>/timeslots/<%= timeslot.id %>"><%= timeslot_string(timeslot)%></a>
-                <span class="soon-warning">! Starts soon</span>
+                <%= timeslot_string(timeslot)%>
+                <a class="btn btn-warning btn-sm pull-right soon" href="/challenges/<%=timeslot.challenge_id%>/timeslots/<%= timeslot.id %>">Join <i class="glyphicon glyphicon-alert"></i></a>
               </li>
           <% end %>
         <% end %>
@@ -41,8 +52,8 @@
         <% if @soon_timeslots[:Tuesday] != nil %>
           <% @soon_timeslots[:Tuesday].each do |timeslot| %>
               <li class="timeslot">
-                <a class="btn btn-warning soon" href="/challenges/<%=timeslot.challenge_id%>/timeslots/<%= timeslot.id %>"><%= timeslot_string(timeslot)%></a>
-                <span class="soon-warning">! Starts soon</span>
+                <%= timeslot_string(timeslot)%>
+                <a class="btn btn-warning btn-sm pull-right soon" href="/challenges/<%=timeslot.challenge_id%>/timeslots/<%= timeslot.id %>">Join <i class="glyphicon glyphicon-alert"></i></a>
               </li>
           <% end %>
         <% end %>
@@ -62,8 +73,8 @@
         <% if @soon_timeslots[:Wednesday] != nil %>
           <% @soon_timeslots[:Wednesday].each do |timeslot| %>
               <li class="timeslot">
-                <a class="btn btn-warning soon" href="/challenges/<%=timeslot.challenge_id%>/timeslots/<%= timeslot.id %>"><%= timeslot_string(timeslot)%></a>
-                <span class="soon-warning">! Starts soon</span>
+                <%= timeslot_string(timeslot)%>
+                <a class="btn btn-warning btn-sm pull-right soon" href="/challenges/<%=timeslot.challenge_id%>/timeslots/<%= timeslot.id %>">Join <i class="glyphicon glyphicon-alert"></i></a>
               </li>
           <% end %>
         <% end %>
@@ -107,8 +118,8 @@
         <% if @soon_timeslots[:Friday] != nil %>
           <% @soon_timeslots[:Friday].each do |timeslot| %>
               <li class="timeslot">
-                <a class="btn btn-warning soon" href="/challenges/<%=timeslot.challenge_id%>/timeslots/<%= timeslot.id %>"><%= timeslot_string(timeslot)%></a>
-                <span class="soon-warning">! Starts soon</span>
+                <%= timeslot_string(timeslot)%>
+                <a class="btn btn-warning btn-sm pull-right soon" href="/challenges/<%=timeslot.challenge_id%>/timeslots/<%= timeslot.id %>">Join <i class="glyphicon glyphicon-alert"></i></a>
               </li>
           <% end %>
         <% end %>
@@ -129,8 +140,8 @@
         <% if @soon_timeslots[:Saturday] != nil %>
           <% @soon_timeslots[:Saturday].each do |timeslot| %>
               <li class="timeslot">
-                <a class="btn btn-warning soon" href="/challenges/<%=timeslot.challenge_id%>/timeslots/<%= timeslot.id %>"><%= timeslot_string(timeslot)%></a>
-                <span class="soon-warning">! Starts soon</span>
+                <%= timeslot_string(timeslot)%>
+                <a class="btn btn-warning btn-sm pull-right soon" href="/challenges/<%=timeslot.challenge_id%>/timeslots/<%= timeslot.id %>">Join <i class="glyphicon glyphicon-alert"></i></a>
               </li>
           <% end %>
         <% end %>
@@ -151,8 +162,8 @@
         <% if @soon_timeslots[:Sunday] != nil %>
           <% @soon_timeslots[:Sunday].each do |timeslot| %>
               <li class="timeslot">
-                <a class="btn btn-warning soon" href="/challenges/<%=timeslot.challenge_id%>/timeslots/<%= timeslot.id %>"><%= timeslot_string(timeslot)%></a>
-                <span class="soon-warning">! Starts soon</span>
+                <%= timeslot_string(timeslot)%>
+                <a class="btn btn-warning btn-sm pull-right soon" href="/challenges/<%=timeslot.challenge_id%>/timeslots/<%= timeslot.id %>">Join <i class="glyphicon glyphicon-alert"></i></a>
               </li>
           <% end %>
         <% end %>
