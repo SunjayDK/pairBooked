@@ -11,13 +11,13 @@ Environment setup:
 
 * pair*Booked* uses the Github api to authenticate users. In order to run this program, you will need to generate a primary key and secret here: https://github.com/settings/tokens/new
  In a new .env file in the pairBooked foler, write:
-    <code>GITHUB_KEY=-your oauth token-
+    <code>GITHUB_KEY=-your oauth token-<br>
     GITHUB_SECRET=-your oauth secret-</code>
 
 * Initialize the databases with the following commands in the terminal:
-  <code>bundle exec rake db:create
-  bundle exec rake db:migrate
-  bundle exec rake db:migrate RAILS_ENV=test
+  <code>bundle exec rake db:create<br>
+  bundle exec rake db:migrate<br>
+  bundle exec rake db:migrate RAILS_ENV=test<br>
   bundle exec rake db:seed</code>
 
 * To run the test suite, run 
