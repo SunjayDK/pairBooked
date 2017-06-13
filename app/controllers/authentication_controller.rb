@@ -32,7 +32,6 @@ class AuthenticationController < ApplicationController
   def timezone
     @student = current_student
     if request.xhr?
-
       @student.time_zone = params[:time_zone]
     else
       @student.time_zone = params[:timezone][:time_zone]
